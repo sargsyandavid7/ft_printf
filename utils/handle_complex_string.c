@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 00:17:27 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/02/20 01:09:26 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/02/26 18:24:19 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ int	handle_complex_string(t_format *format, va_list argslist)
 
 	string = va_arg(argslist, char *);
 	size = 0;
+	if (string == NULL)
+		string = "(null)";
 	len = ft_strlen(string);
 	if (format->precision > -1 && format->lenght == -1)
 		format->lenght = 0;
@@ -103,8 +105,6 @@ int	handle_complex_string(t_format *format, va_list argslist)
 		return (case3(format, &size, string));
 	else if (format->lenght < len && format->width <= len)
 	{
-		if (string == NULL)
-			string = "(null)";
 		len = ft_strlen(string);
 		size += len;
 		write(1, string, len);

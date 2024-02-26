@@ -6,13 +6,13 @@
 /*   By: dasargsy <dasargsy@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 23:16:39 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/02/23 23:17:59 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/02/26 18:23:48 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	handle_percent()
+int	handle_percent(void )
 {
 	write(1, "%", 1);
 	return (1);

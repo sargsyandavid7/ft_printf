@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:55:56 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/02/23 19:21:29 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/02/26 17:11:15 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	normal_case_hex(t_format *format, char *str)
 	int	size;
 
 	size = 0;
-	if (format->hash > -1 && str[0] != '0')
+	if (format->hash > -1 && (str[0] != '0' || format->type == 'p'))
 	{
 		size += 2;
 		if (format->type == 'X')

@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 01:50:51 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/02/24 14:47:26 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/02/26 18:20:39 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	print_logic_hex(t_format *format, int width, int size)
 		if (width == 1)
 		{
 			width -= 1;
-			size += 1;
+			size += 2;
 		}
 		else if (width == 0)
 			size += 2;
@@ -44,11 +44,11 @@ static int	minus_case(t_format *format, char *str, int i)
 	size = 0;
 	width = format->width - ft_strlen(str);
 	size += print_logic_hex(format, width, size);
-	if (format->hash > -1 && str[0] != '0')
+	if (format->hash > -1 && (str[0] != '0' || format->type == 'p'))
 	{
 		if (width > 1)
 			width -= 2;
-		if (width == 1)
+		else if (width == 1)
 			width -= 1;
 	}
 	if (i)
@@ -73,11 +73,11 @@ static int	non_minus_zero(t_format *format, char *str, int i)
 	width = format->width;
 	width -= ft_strlen(str);
 	size += print_logic_hex(format, width, size);
-	if (format->hash > -1 && str[0] != '0')
+	if (format->hash > -1 && (str[0] != '0' || format->type == 'p'))
 	{
 		if (width > 1)
 			width -= 2;
-		if (width == 1)
+		else if (width == 1)
 			width -= 1;
 	}
 	if (width > 0)
@@ -100,11 +100,11 @@ static int	non_minus_non_zero(t_format *format, char *str, int i)
 
 	size = 0;
 	width = format->width - ft_strlen(str);
-	if (format->hash > -1 && str[0] != '0')
+	if (format->hash > -1 && (str[0] != '0' || format->type == 'p'))
 	{
 		if (width > 1)
 			width -= 2;
-		if (width == 1)
+		else if (width == 1)
 			width -= 1;
 	}
 	if (width > 0)

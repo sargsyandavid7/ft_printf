@@ -59,7 +59,6 @@ int			widths_case_only_hex(t_format *format, char *str, int i);
 int			simple_prec_case_hex(t_format *format, char *str, int i);
 int			wdths_and_prec_case_hex(t_format *format, char *str);
 int			handle_pointer(t_format *format, va_list args_lst);
-int			handle_percent();
-
+int			handle_percent(void);
 
 #endif

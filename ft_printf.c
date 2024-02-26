@@ -28,8 +28,7 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			count += write_spec_data(i, format, args);
-			i++;
+			count += write_spec_data(i++, format, args);
 			while (!included("csduixXp%", format[i]) && format[i])
 				i++;
 		}
