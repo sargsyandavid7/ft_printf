@@ -16,7 +16,6 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdio.h>
-# include "../libft/libft.h"
 
 typedef struct t_format
 {
@@ -60,5 +59,13 @@ int			simple_prec_case_hex(t_format *format, char *str, int i);
 int			wdths_and_prec_case_hex(t_format *format, char *str);
 int			handle_pointer(t_format *format, va_list args_lst);
 int			handle_percent(void);
+int			ft_atoi(const char *str);
+char		*ft_strdup(char const *str);
+size_t		ft_strlen(char const *str);
+char		*ft_itoa(long nb);
+char		*ft_substr(char *s, unsigned int start, size_t len);
+int			ft_isdigit(int c);
+void		ft_putstr_fd(char *s, int fd);
+void		ft_putchar_fd(char c, int fd);
 
 #endif

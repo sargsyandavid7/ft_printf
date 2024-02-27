@@ -25,15 +25,21 @@ SRCS = 	ft_printf.c \
 		utils/simple_prec_case_hex.c \
 		utils/wdth_and_prec_hex.c \
 		utils/handle_pointer.c \
-		utils/handle_percent.c 
+		utils/handle_percent.c \
+		libft_utils/ft_atoi.c \
+		libft_utils/ft_itoa.c \
+		libft_utils/ft_strdup.c \
+		libft_utils/ft_strlen.c \
+		libft_utils/ft_substr.c \
+		libft_utils/ft_isdigit.c \
+		libft_utils/ft_putstr_fd.c \
+		libft_utils/ft_putchar_fd.c 
 
 CC = cc
 
 OBJS = $(SRCS:.c=.o)
 
 NAME = libftprintf.a
-
-LIB_PATH = ../libft/*.o
 
 HEADER = ft_printf.h
 
@@ -42,7 +48,7 @@ RM = rm -rf
 all : $(NAME)
 
 $(NAME) : $(OBJS) $(LIB_PATH)
-	ar rcs $(NAME) $(OBJS) $(LIB_PATH)
+	ar rcs $(NAME) $(OBJS)
 
 %.o:%.c $(HEADER)
 	$(CC) $(FLAGS)  -I.  -c $< -o $@
