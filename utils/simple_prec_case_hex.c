@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 02:20:59 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/02/24 19:29:17 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:33:50 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	simple_prec_case_hex(t_format *format, char *str, int i)
 		free(str);
 		return (0);
 	}
-	if (format->hash > 0)
+	if (format->hash >= 0 && (str[0] != '0' || format->type == 'p'))
 	{
 		size += 2;
 		if (format->type == 'X')

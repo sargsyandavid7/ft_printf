@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 01:34:37 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/02/23 02:25:53 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:35:37 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,27 +43,27 @@ int	handle_complex_int(t_format *format, va_list arg_list)
 {
 	long	value;
 	char	*str;
-	int		negative;
+	int		neg;
 
 	if (format->type == 'd' || format->type == 'i')
 		value = va_arg(arg_list, int);
 	else
 		value = va_arg(arg_list, unsigned int);
-	negative = 0;
+	neg = 0;
 	if (value < 0)
 	{
 		value = -value;
-		negative = 1;
+		neg = 1;
 	}
 	str = ft_itoa(value);
-	if (format->precision > -1 && format->width >= (int )ft_strlen(str))
-		return (wdths_and_prec_case(format, str, negative));
-	if (format->width >= (int )ft_strlen(str) && format->precision == -1)
-		return (widths_case_only(format, str, negative, 1));
-	if (format->width <= (int )ft_strlen(str) && format->precision == -1)
-		return (normal_case(format, str, negative));
-	if ((format->width == -1 || format->width <= (int )ft_strlen(str))
+	if (format->precision > -1 && format->width >= (int )ft_strlen(str) + neg)
+		return (wdths_and_prec_case(format, str, neg));
+	if (format->width > (int )ft_strlen(str) + neg && format->precision == -1)
+		return (widths_case_only(format, str, neg, 1));
+	if (format->width <= (int )ft_strlen(str) + neg && format->precision == -1)
+		return (normal_case(format, str, neg));
+	if ((format->width == -1 || format->width <= (int )ft_strlen(str) + neg)
 		&& format->precision > -1)
-		return (simple_prec_case(format, str, negative, 1));
+		return (simple_prec_case(format, str, neg, 1));
 	return (0);
 }

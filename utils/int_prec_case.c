@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:34:03 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/02/23 02:27:01 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/03/17 12:39:57 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ int	simple_prec_case(t_format *format, char *str, int negative, int i)
 	if ((precision == 0) && str[0] == '0' && i)
 	{
 		free(str);
-		return (0);
+		str = ft_strdup("");
 	}
 	if (negative)
 		write(1, "-", 1);
-	if (format->plus > -1 && !negative && size++)
+	if (format->plus > -1 && !negative && ++size)
 		write(1, "+", 1);
-	if (format->space > -1 && !negative && size++)
+	if (format->space > -1 && !negative && ++size)
 		write(1, " ", 1);
 	size += prec_is_bigger(precision, i, str) + negative;
 	return (size);

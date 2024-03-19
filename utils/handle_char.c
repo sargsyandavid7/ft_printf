@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 22:59:43 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/02/17 22:51:57 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/03/17 11:46:32 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,27 +46,6 @@ static int	handle_complex_char(t_format *formatted_data, va_list args_lst)
 	else
 		len = write(1, &val, 1);
 	return (len);
-}
-
-int	check_if_simple(t_format *formatted_data)
-{
-	if (formatted_data->width != -1)
-		return (0);
-	if (formatted_data->zero != -1)
-		return (0);
-	if (formatted_data->minus != -1)
-		return (0);
-	if (formatted_data->precision != -1)
-		return (0);
-	if (formatted_data->lenght != -1)
-		return (0);
-	if (formatted_data->hash != -1)
-		return (0);
-	if (formatted_data->plus != -1)
-		return (0);
-	if (formatted_data->space != -1)
-		return (0);
-	return (1);
 }
 
 int	handle_char(t_format *formatted_data, va_list args_lst)

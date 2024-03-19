@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 01:50:51 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/02/26 18:20:39 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:54:11 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static int	minus_case(t_format *format, char *str, int i)
 
 	size = 0;
 	width = format->width - ft_strlen(str);
-	size += print_logic_hex(format, width, size);
+	if (str[0] != '0' || format->type == 'p')
+		size += print_logic_hex(format, width, size);
 	if (format->hash > -1 && (str[0] != '0' || format->type == 'p'))
 	{
 		if (width > 1)
@@ -70,9 +71,9 @@ static int	non_minus_zero(t_format *format, char *str, int i)
 	int	width;
 
 	size = 0;
-	width = format->width;
-	width -= ft_strlen(str);
-	size += print_logic_hex(format, width, size);
+	width = format->width - ft_strlen(str);
+	if (str[0] != '0' || format->type == 'p')
+		size += print_logic_hex(format, width, size);
 	if (format->hash > -1 && (str[0] != '0' || format->type == 'p'))
 	{
 		if (width > 1)
@@ -112,7 +113,8 @@ static int	non_minus_non_zero(t_format *format, char *str, int i)
 		size += width;
 		print_spcs(width);
 	}
-	size = print_logic_hex(format, width, size);
+	if (str[0] != '0' || format->type == 'p')
+		size = print_logic_hex(format, width, size);
 	if (i)
 	{
 		write(1, str, ft_strlen(str));

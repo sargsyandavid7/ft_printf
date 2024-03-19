@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:29:18 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/02/23 03:12:02 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:57:34 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	minus_case(t_format *format, char *str, int negative, int i)
 
 	size = 0;
 	width = format->width - ft_strlen(str) - negative;
-	size += print_logic(negative, format, width, size);
+	size += print_logic(negative, format, &width, size);
 	if (i)
 	{
 		write(1, str, ft_strlen(str));
@@ -41,7 +41,7 @@ static int	non_minus_zero(t_format *format, int negative, char *str, int i)
 	size = 0;
 	width = format->width;
 	width -= ft_strlen(str) + negative;
-	size += print_logic(negative, format, width, size);
+	size += print_logic(negative, format, &width, size);
 	if (width > 0)
 	{
 		size += width;
@@ -61,20 +61,19 @@ static int	int_non_m_non_z_case(t_format *format, int negative,
 	int	size;
 
 	size = 0;
-	if (negative)
-		write(1, "-", 1);
+	width = 0;
 	if (format->plus > -1 && !negative)
 	{
+		size++;
 		write(1, "+", 1);
-		if (width <= 0)
-			size++;
 	}
-	if (format->space > -1 && !negative)
+	if (format->space > -1)
 	{
-		if (width <= 0)
-			size++;
+		size++;
 		write(1, " ", 1);
 	}
+	if (negative)
+		write(1, "-", 1);
 	return (size);
 }
 

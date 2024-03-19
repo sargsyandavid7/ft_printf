@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:19:20 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/02/23 03:13:41 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/03/17 12:34:46 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	case1(int size, int negative, char *str, t_format *format)
 		write(1, str, ft_strlen(str));
 		if (format->width > 0)
 		{
-			if (negative)
+			if (negative || format->space > -1 || format->plus > -1)
 				format->width--;
 			size += format->width;
 			print_spcs(format->width);
@@ -30,7 +30,7 @@ static int	case1(int size, int negative, char *str, t_format *format)
 	{
 		if (format->width > 0)
 		{
-			if (negative)
+			if (negative || format->space > -1 || format->plus > -1)
 				format->width--;
 			size += format->width;
 			print_spcs(format->width);

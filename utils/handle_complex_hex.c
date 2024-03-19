@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:55:56 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/02/26 17:11:15 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:42:53 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	handle_complex_hex(t_format *format, va_list args_lst)
 	if (format->width == -1)
 		format->width = 0;
 	if (format->precision > -1 && format->width >= (int )ft_strlen(hex_str))
-		return (wdths_and_prec_case(format, hex_str, 0));
+		return (wdths_and_prec_case_hex(format, hex_str));
 	if (format->width <= len && format->precision == -1)
 		return (normal_case_hex(format, hex_str));
 	if (format->width > len && format->precision == -1)

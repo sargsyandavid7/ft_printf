@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 22:04:34 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/02/23 23:17:46 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/03/17 11:49:44 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ int	create_data_for_print(t_format *formatted_data, va_list args_lst)
 	if (formatted_data->type == 'p')
 		value_len = handle_pointer(formatted_data, args_lst);
 	if (formatted_data->type == '%')
-		value_len = handle_percent();
+		value_len = handle_percent(formatted_data);
 	return (value_len);
 }
